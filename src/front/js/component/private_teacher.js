@@ -30,7 +30,6 @@ const Private_teacher = () => {
                                 </div>
                                 <div className="user-data">
                                     <h4>{store.name} {store.lastname}</h4>
-                                    <span>Joined February 06, 2017</span>
                                 </div>
                             </div>
                         </aside>

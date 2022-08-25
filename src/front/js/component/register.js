@@ -2,9 +2,6 @@ import React, { useContext, useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { Context } from '../store/appContext';
 import Modal from 'react-modal';
-import { useForm } from "react-hook-form";
-import { yupResolver } from '@hookform/resolvers/yup';
-import * as Yup from 'yup';
 
 const customStyles = {
     content: {
@@ -24,20 +21,7 @@ const Register = () => {
     const { store, actions } = useContext(Context);
     const history = useNavigate();
     const [show, setShow] = useState(false);
-    const [modalIsOpen, setIsOpen] = useState(false);
-    const validationSchema = Yup.object().shape({
-        acceptTerms: Yup.bool()
-            .oneOf([true], 'Debes aceptar los terminos y condiciones')
-    });
-    const formOptions = { resolver: yupResolver(validationSchema) };
-
-    const { register, handleSubmit, formState } = useForm(formOptions);
-    const { errors } = formState;
-    function onSubmit(data) {
-        alert('SUCCESS!!' + JSON.stringify(data, null, 4));
-        return false;
-    }
-
+    const [modalIsOpen, setIsOpen] = useState(false)
 
     let setOpen = () => {
         setIsOpen(true);
@@ -130,19 +114,20 @@ const Register = () => {
                                                 />
                                                 <span className='ms-2 me-5'>{isError}</span>
                                             </div>
-                                            <div className="form-check d-flex justify-content-center mb-5" onSubmit={handleSubmit(onSubmit)}>
+                                            <div className="form-check d-flex justify-content-center mb-5">
                                                 <input
-                                                    name="acceptTerms"
-                                                    className={`form-check-input me-2 ${errors.acceptTerms ? 'is-invalid' : ''}`}
-                                                    type="checkbox" {...register('acceptTerms')}
+                                                    className="form-check-input me-2"
+                                                    type="checkbox"
                                                     defaultValue=""
-                                                    id="acceptTerms" 
+                                                    id="form2Example3cg"
+                                                    style={{display: "inline-block",}}
+                                                    required
+                                                    
                                                 />
                                                 <label
                                                     className="form-check-label"
-                                                    htmlFor="acceptTerms"
+                                                    htmlFor="form2Example3cg"
                                                 >
-                                                <div className="invalid-feedback">{errors.acceptTerms?.message}</div>
                                                     I agree all statements in{" "}
                                                     <Link to="/#" className="text-body link-info" onClick={setOpen}>
                                                         <u>Terms of service</u>
