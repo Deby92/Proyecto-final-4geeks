@@ -22,7 +22,6 @@ const Private_teacher = () => {
                             ></div>
                             <div className="user-info">
                                 <div className="user-avatar">
-                                    <a className="edit-avatar" href="#" />
                                     <img
                                         src={(store.picture == "") ? "https://bootdey.com/img/Content/avatar/avatar1.png" : store.picture}
                                         alt="User"
